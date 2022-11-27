@@ -1,11 +1,12 @@
-package ir.maktab.entitty;
+package ir.maktab.entitty.enums;
 
 public enum UniversityType {
-    PUBLIC,
+    DAILY,
+    EVENING,
     NONPROFIT,
     COMPOUND,
     EXCESS_CAPACITY,
     PAYAM_NOOR,
     APPLIED_SCIENCES,
-    AZAD;
+    AZAD
 }
