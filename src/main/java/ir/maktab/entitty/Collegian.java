@@ -1,12 +1,11 @@
 package ir.maktab.entitty;
 
-import ir.maktab.entitty.enums.Grade;
-import ir.maktab.entitty.enums.UniversityType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Getter
 @Setter
@@ -16,20 +15,8 @@ import java.util.Date;
 @Entity
 @PrimaryKeyJoinColumn(name = "collegianId")
 public class Collegian extends Person {
-    @Column(nullable = false, unique = true)
-    String studentNumber;
-    String universityName;
-    @Enumerated(EnumType.STRING)
-    UniversityType universityType;
-    @Temporal(TemporalType.DATE)
-    Date enteringDate;
-    @Enumerated(EnumType.STRING)
-    Grade grade;
-    String username;
-    String password;
-
-    public Collegian(Person person, String password) {
-        this.username = person.getNationalCode();
-        this.password = password;
-    }
+    @OneToOne
+    Account account;
+    @OneToOne
+    UniversityInfo universityInfo;
 }
