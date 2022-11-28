@@ -1,5 +1,6 @@
 package ir.maktab.entitty;
 
+import ir.maktab.entitty.enums.Grade;
 import ir.maktab.entitty.enums.UniversityType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,5 +21,6 @@ public class Collegian {
     UniversityType universityType;
     @Temporal(TemporalType.DATE)
     Date enteringDate;
-
+    @Enumerated(EnumType.STRING)
+    Grade grade;
 }
