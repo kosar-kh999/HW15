@@ -25,4 +25,6 @@ public class Collegian extends Person {
     Date enteringDate;
     @Enumerated(EnumType.STRING)
     Grade grade;
+    @Embedded
+    Account account;
 }
