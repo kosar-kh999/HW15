@@ -25,6 +25,11 @@ public class Collegian extends Person {
     Date enteringDate;
     @Enumerated(EnumType.STRING)
     Grade grade;
-    @Embedded
-    Account account;
+    String username;
+    String password;
+
+    public Collegian(Person person, String password) {
+        this.username = person.getNationalCode();
+        this.password = password;
+    }
 }
