@@ -13,7 +13,9 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Collegian {
+@Entity
+@PrimaryKeyJoinColumn(name = "collegianId")
+public class Collegian extends Person {
     @Column(nullable = false, unique = true)
     String studentNumber;
     String universityName;
