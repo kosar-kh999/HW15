@@ -14,9 +14,12 @@ import java.util.Date;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class UniversityInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     @Column(nullable = false, unique = true)
     String studentNumber;
     String universityName;
@@ -26,4 +29,14 @@ public class UniversityInfo {
     Date enteringDate;
     @Enumerated(EnumType.STRING)
     Grade grade;
+
+    public UniversityInfo(String studentNumber, String universityName, UniversityType universityType, Date enteringDate,
+                          Grade grade) {
+        this.studentNumber = studentNumber;
+        this.universityName = universityName;
+        this.universityType = universityType;
+        this.enteringDate = enteringDate;
+        this.grade = grade;
+    }
 }
+

@@ -27,4 +27,19 @@ public class Person {
     String nationalCode;
     @Temporal(TemporalType.DATE)
     Date birthDate;
+
+    public Person(String firstName, String lastName, String fatherName, String motherName,
+                  String birthCertificateNumber, String nationalCode, Date birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        BirthCertificateNumber = birthCertificateNumber;
+        this.nationalCode = nationalCode;
+        this.birthDate = birthDate;
+    }
+
+    public Person() {
+
+    }
 }

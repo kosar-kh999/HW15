@@ -1,30 +1,23 @@
 package ir.maktab.entitty;
 
+import ir.maktab.entitty.enums.PaymentPeriod;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-public class Account {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    @Column(unique = true)
-    String username;
-    String password;
-
-    public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public Account() {
-
-    }
+    double amount;
+    @Enumerated(EnumType.STRING)
+    PaymentPeriod paymentPeriod;
 }

@@ -6,9 +6,10 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!--<class>entity.BorrowedBook</class>
-        <class>entity.Book</class>
-        <class>entity.Person</class>-->
+        <class>ir.maktab.entitty.Account</class>
+        <class>ir.maktab.entitty.Collegian</class>
+        <class>ir.maktab.entitty.UniversityInfo</class>
+        <class>ir.maktab.entitty.Person</class>
 
 
         <properties>
@@ -16,10 +17,10 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="sql2022"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="false"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <!--  create | create-drop | validate | update  -->
 
         </properties>
