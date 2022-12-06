@@ -27,4 +27,5 @@ public class CreditCard {
     Date OpeningDate;
     @Enumerated(EnumType.STRING)
     BankType bankType;
+    double amount;
 }
