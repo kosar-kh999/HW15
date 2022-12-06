@@ -18,7 +18,7 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column(unique = true, length = 16)
-    String cartNumber;
+    String cardNumber;
     @Temporal(TemporalType.TIMESTAMP)
     Date expirationDate;
     @Column(length = 4)
