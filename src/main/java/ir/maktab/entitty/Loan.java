@@ -3,9 +3,11 @@ package ir.maktab.entitty;
 import ir.maktab.entitty.enums.PaymentPeriod;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -21,4 +23,7 @@ public class Loan implements Serializable {
     double amount;
     @Enumerated(EnumType.STRING)
     PaymentPeriod paymentPeriod;
+    @CreationTimestamp
+    @Temporal(value = TemporalType.TIMESTAMP)
+    Date receiveDate;
 }
