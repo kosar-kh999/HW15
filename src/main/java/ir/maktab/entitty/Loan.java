@@ -13,7 +13,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Loan implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
