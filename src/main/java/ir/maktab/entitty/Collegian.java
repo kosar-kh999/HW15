@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Collegian extends Person {
+public class Collegian extends Person implements Serializable {
     @OneToOne(cascade = CascadeType.MERGE)
     Account account;
     @OneToOne(cascade = CascadeType.MERGE)
