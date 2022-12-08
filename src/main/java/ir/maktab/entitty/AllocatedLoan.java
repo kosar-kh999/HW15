@@ -26,6 +26,6 @@ public class AllocatedLoan {
     @CreationTimestamp
     @Temporal(value = TemporalType.TIMESTAMP)
     Date receiveLoan;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     CreditCard creditCard;
 }
