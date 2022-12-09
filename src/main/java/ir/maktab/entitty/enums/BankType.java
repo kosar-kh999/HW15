@@ -5,5 +5,5 @@ public enum BankType {
     TEJARAT,
     MASKAN,
     REFAH,
-    OTHER_CITY,
+    OTHER_BANK,
 }
