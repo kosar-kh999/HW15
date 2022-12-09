@@ -25,5 +25,5 @@ public class Loan implements Serializable {
     PaymentPeriod paymentPeriod;
     @CreationTimestamp
     @Temporal(value = TemporalType.TIMESTAMP)
-    Date receiveDate;
+    Date requestDate;
 }
