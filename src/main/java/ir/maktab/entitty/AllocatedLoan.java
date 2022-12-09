@@ -25,7 +25,9 @@ public class AllocatedLoan {
     Loan loan;
     @CreationTimestamp
     @Temporal(value = TemporalType.TIMESTAMP)
-    Date requestDate;
+    Date receiveDate;
     @OneToOne(cascade = CascadeType.MERGE)
     CreditCard creditCard;
+    @OneToMany
+    List<Refund> refunds = new ArrayList<>();
 }
