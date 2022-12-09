@@ -7,7 +7,6 @@ import ir.maktab.service.EducationalLoanService;
 
 public class EducationalLoanServiceImpl implements EducationalLoanService {
     EducationalLoanRepository educationalLoanRepository = new EducationalLoanRepository();
-    EducationLoan educationLoan = new EducationLoan();
 
     @Override
     public void saveNewEducationalLoan(EducationLoan educationLoan) {
@@ -17,7 +16,8 @@ public class EducationalLoanServiceImpl implements EducationalLoanService {
             educationLoan.setAmount(1900000);
         } else if (educationLoan.getGrade().equals(Grade.CONTINUOUS_MASTER) ||
                 educationLoan.getGrade().equals(Grade.DISCONTINUOUS_MASTER) ||
-                educationLoan.getGrade().equals(Grade.PHD) || educationLoan.getGrade().equals(Grade.CONTINUOUS_PHD)) {
+                educationLoan.getGrade().equals(Grade.PHD) || educationLoan.getGrade().
+                equals(Grade.CONTINUOUS_PHD)) {
             educationLoan.setAmount(2250000);
         } else if (educationLoan.getGrade().equals(Grade.DISCONTINUOUS_SPECIALIZED_DOCTORATE)) {
             educationLoan.setAmount(2600000);
