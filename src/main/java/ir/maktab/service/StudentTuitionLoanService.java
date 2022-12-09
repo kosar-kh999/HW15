@@ -1,10 +1,9 @@
 package ir.maktab.service;
 
-import ir.maktab.entitty.EducationLoan;
 import ir.maktab.entitty.StudentTuitionLoan;
 
 public interface StudentTuitionLoanService {
-    void saveNewStudentTuitionLoan(EducationLoan educationLoan);
+    void saveNewStudentTuitionLoan(StudentTuitionLoan studentTuitionLoan);
 
     StudentTuitionLoan findStudentTuitionLoanById(int id);
 
