@@ -22,5 +22,5 @@ public class Refund {
     @Temporal(value = TemporalType.TIMESTAMP)
     Date dateOfPayment;
     boolean isPaid;
-    final int NUMBER_OF_MONTH = 60;
+    int numberOfMonth;
 }
