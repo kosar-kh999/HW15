@@ -1,17 +1,16 @@
 package ir.maktab.service;
 
-import ir.maktab.entitty.Account;
 import ir.maktab.entitty.Collegian;
 import ir.maktab.exception.DuplicateNationalCodeException;
 
-public interface AccountService {
+public interface CollegianService {
     void signUp(Collegian collegian);
 
     boolean checkNationalCode(String username) throws DuplicateNationalCodeException;
 
-    Account signIn(String username, String password);
+    Collegian signIn(String username, String password);
 
-    void editAccount(Account account);
+    void editCollegian(Collegian collegian);
 
-    void signOut(Account account);
+    void signOut(Collegian collegian);
 }
