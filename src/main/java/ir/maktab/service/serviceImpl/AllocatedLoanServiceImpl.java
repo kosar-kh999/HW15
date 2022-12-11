@@ -9,8 +9,6 @@ import ir.maktab.exception.LoanException;
 import ir.maktab.repository.AllocatedLoanRepository;
 import ir.maktab.service.AllocatedLoanService;
 
-import java.util.Date;
-
 public class AllocatedLoanServiceImpl implements AllocatedLoanService {
     AllocatedLoanRepository allocatedLoanRepository = new AllocatedLoanRepository();
 
