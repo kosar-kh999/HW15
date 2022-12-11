@@ -11,4 +11,7 @@ public interface HousingLoanService {
     void update(HousingLoan housingLoan);
 
     void remove(HousingLoan housingLoan);
+
+    void getDate(HousingLoan housingLoan) throws LoanException;
+
 }
