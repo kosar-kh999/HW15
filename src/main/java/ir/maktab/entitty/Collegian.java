@@ -17,8 +17,9 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Collegian extends Person implements Serializable {
-    @OneToOne(cascade = CascadeType.MERGE)
-    Account account;
+    @Column(unique = true)
+    String username;
+    String password;
     @OneToOne(cascade = CascadeType.MERGE)
     UniversityInfo universityInfo;
     @Enumerated(EnumType.STRING)
@@ -28,11 +29,15 @@ public class Collegian extends Person implements Serializable {
     List<CreditCard> creditCards = new ArrayList<>();
 
     public Collegian(String firstName, String lastName, String fatherName, String motherName,
-                     String birthCertificateNumber, String nationalCode, Date birthDate, Account account,
-                     UniversityInfo universityInfo) {
+                     String birthCertificateNumber, String nationalCode, Date birthDate, String username,
+                     String password, UniversityInfo universityInfo, MaritalStatus maritalStatus,
+                     boolean isDormitoryResident) {
         super(firstName, lastName, fatherName, motherName, birthCertificateNumber, nationalCode, birthDate);
-        this.account = account;
+        this.username = username;
+        this.password = password;
         this.universityInfo = universityInfo;
+        this.maritalStatus = maritalStatus;
+        this.isDormitoryResident = isDormitoryResident;
     }
 
     public Collegian() {
