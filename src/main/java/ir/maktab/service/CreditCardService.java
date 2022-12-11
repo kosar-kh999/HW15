@@ -1,8 +1,8 @@
 package ir.maktab.service;
 
 import ir.maktab.entitty.CreditCard;
-import ir.maktab.exception.ExtraAmount;
-import ir.maktab.exception.NegativeAmount;
+import ir.maktab.exception.ExtraAmountException;
+import ir.maktab.exception.NegativeAmountException;
 
 public interface CreditCardService {
     void saveNewCreditCard(CreditCard creditCard);
@@ -13,7 +13,7 @@ public interface CreditCardService {
 
     void remove(CreditCard creditCard);
 
-    void withdraw(CreditCard creditCard, double amount) throws ExtraAmount, NegativeAmount;
+    void withdraw(CreditCard creditCard, double amount) throws ExtraAmountException, NegativeAmountException;
 
-    void deposit(CreditCard creditCard, double amount) throws NegativeAmount;
+    void deposit(CreditCard creditCard, double amount) throws NegativeAmountException;
 }
