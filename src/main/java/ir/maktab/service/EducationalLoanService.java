@@ -13,4 +13,5 @@ public interface EducationalLoanService {
     void deleteEducationalLoan(EducationLoan educationLoan);
 
     void getDate(EducationLoan educationLoan) throws LoanException;
+
 }
