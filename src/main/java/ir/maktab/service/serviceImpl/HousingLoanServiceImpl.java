@@ -7,6 +7,9 @@ import ir.maktab.entitty.enums.MaritalStatus;
 import ir.maktab.exception.LoanException;
 import ir.maktab.repository.HousingLoanRepository;
 import ir.maktab.service.HousingLoanService;
+import ir.maktab.util.DateUtil;
+
+import java.time.LocalDateTime;
 
 public class HousingLoanServiceImpl implements HousingLoanService {
     HousingLoanRepository housingLoanRepository = new HousingLoanRepository();
@@ -40,5 +43,19 @@ public class HousingLoanServiceImpl implements HousingLoanService {
     @Override
     public void remove(HousingLoan housingLoan) {
         housingLoanRepository.remove(housingLoan);
+    }
+
+    @Override
+    public void getDate(HousingLoan housingLoan) throws LoanException {
+        LocalDateTime firstDate = DateUtil.changeDateToLocalDateTime(housingLoan.getRequestDate());
+        LocalDateTime secondDate = DateUtil.changeDateToLocalDateTime(housingLoan.getRequestDate());
+        if (firstDate.getDayOfMonth() > 22 && firstDate.getDayOfMonth() < 30 && firstDate.getMonthValue() == 10) {
+            saveNewHousingLoan(housingLoan);
+        } else {
+            if (secondDate.getDayOfMonth() > 13 && secondDate.getDayOfMonth() < 21 && secondDate.getMonthValue() == 2) {
+                saveNewHousingLoan(housingLoan);
+            }
+        }
+        throw new LoanException("You can't request for loan in this time ! ");
     }
 }
