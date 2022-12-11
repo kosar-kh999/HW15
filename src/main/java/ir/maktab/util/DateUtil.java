@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class DateUtil {
@@ -18,9 +19,16 @@ public class DateUtil {
         return ldt;
     }
 
-    public  static long differentDays(LocalDateTime localDateTime1, LocalDateTime localDateTime2) {
+    public static long differentDays(LocalDateTime localDateTime1, LocalDateTime localDateTime2) {
 
-        long daysBetween =Math.abs(Duration.between(localDateTime1, localDateTime2).toDays());
+        long daysBetween = Math.abs(Duration.between(localDateTime1, localDateTime2).toDays());
         return daysBetween;
     }
+
+    public static long findDifference(LocalDateTime start) {
+        LocalDateTime now = LocalDateTime.now();
+        long years = ChronoUnit.YEARS.between(start, now);
+        return years;
+    }
+
 }
