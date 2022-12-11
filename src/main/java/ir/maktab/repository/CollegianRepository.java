@@ -1,13 +1,12 @@
 package ir.maktab.repository;
 
-import ir.maktab.entitty.Account;
 import ir.maktab.entitty.Collegian;
 import ir.maktab.exception.DuplicateNationalCodeException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class AccountRepository {
+public class CollegianRepository {
 
     public void creat(Collegian collegian) {
         EntityManager entityManager = EntityManagerFactoryProducer.emf.createEntityManager();
@@ -20,7 +19,7 @@ public class AccountRepository {
     public boolean checkUsername(String username) throws DuplicateNationalCodeException {
         EntityManager entityManager = EntityManagerFactoryProducer.emf.createEntityManager();
         entityManager.getTransaction().begin();
-        String hql = "SELECT COUNT (*) FROM Account  where username=:username";
+        String hql = "SELECT COUNT (*) FROM Collegian  where username=:username";
         Query query = entityManager.createQuery(hql);
         query.setParameter("username", username);
         Long count = ((Number) query.getSingleResult()).longValue();
@@ -31,31 +30,31 @@ public class AccountRepository {
         return true;
     }
 
-    public Account findByUsernameAndPassword(String username, String password) {
+    public Collegian findByUsernameAndPassword(String username, String password) {
         EntityManager entityManager = EntityManagerFactoryProducer.emf.createEntityManager();
         entityManager.getTransaction().begin();
-        String hql = "from Account where username=:username and password=:password";
-        Query query = entityManager.createQuery(hql, Account.class);
+        String hql = "from Collegian where username=:username and password=:password";
+        Query query = entityManager.createQuery(hql, Collegian.class);
         query.setParameter("username", username);
         query.setParameter("password", password);
-        Account account = (Account) query.getSingleResult();
+        Collegian collegian = (Collegian) query.getSingleResult();
         entityManager.getTransaction().commit();
         entityManager.close();
-        return account;
+        return collegian;
     }
 
-    public void update(Account account) {
+    public void update(Collegian collegian) {
         EntityManager entityManager = EntityManagerFactoryProducer.emf.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.merge(account);
+        entityManager.merge(collegian);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    public void remove(Account account) {
+    public void remove(Collegian collegian) {
         EntityManager entityManager = EntityManagerFactoryProducer.emf.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.remove(entityManager.find(Account.class, account.getId()));
+        entityManager.remove(entityManager.find(Collegian.class, collegian.getId()));
         entityManager.getTransaction().commit();
         entityManager.close();
     }
