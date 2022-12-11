@@ -12,7 +12,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void signUp(Collegian collegian) {
         accountRepository.creat(collegian);
-        collegian.getAccount().setPassword(collegian.getNationalCode());
     }
 
     @Override
@@ -34,4 +33,6 @@ public class AccountServiceImpl implements AccountService {
     public void signOut(Account account) {
         accountRepository.remove(account);
     }
+
+
 }
