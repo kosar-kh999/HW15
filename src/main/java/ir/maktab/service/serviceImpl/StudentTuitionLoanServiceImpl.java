@@ -2,6 +2,7 @@ package ir.maktab.service.serviceImpl;
 
 import ir.maktab.entitty.StudentTuitionLoan;
 import ir.maktab.entitty.enums.Grade;
+import ir.maktab.entitty.enums.UniversityType;
 import ir.maktab.exception.LoanException;
 import ir.maktab.repository.StudentTuitionLoanRepository;
 import ir.maktab.service.StudentTuitionLoanService;
@@ -13,21 +14,30 @@ public class StudentTuitionLoanServiceImpl implements StudentTuitionLoanService 
     StudentTuitionLoanRepository studentTuitionLoanRepository = new StudentTuitionLoanRepository();
 
     @Override
-    public void saveNewStudentTuitionLoan(StudentTuitionLoan studentTuitionLoan) {
-        if (studentTuitionLoan.getGrade().equals(Grade.ASSOCIATE) ||
-                studentTuitionLoan.getGrade().equals(Grade.CONTINUOUS_BACHELORS) ||
-                studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_BACHELORS)) {
-            studentTuitionLoan.setAmount(1300000);
-        } else if (studentTuitionLoan.getGrade().equals(Grade.CONTINUOUS_MASTER) ||
-                studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_MASTER) ||
-                studentTuitionLoan.getGrade().equals(Grade.PHD) || studentTuitionLoan.getGrade().
-                equals(Grade.CONTINUOUS_PHD)) {
-            studentTuitionLoan.setAmount(2600000);
-        } else if (studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_SPECIALIZED_DOCTORATE)) {
-            studentTuitionLoan.setAmount(65000000);
-        }
-        studentTuitionLoanRepository.creat(studentTuitionLoan);
+    public void saveNewStudentTuitionLoan(StudentTuitionLoan studentTuitionLoan) throws LoanException {
+        if (studentTuitionLoan.getUniversityType().equals(UniversityType.AZAD) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.APPLIED_SCIENCES) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.COMPOUND) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.EVENING) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.EXCESS_CAPACITY) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.NONPROFIT) ||
+                studentTuitionLoan.getUniversityType().equals(UniversityType.PAYAM_NOOR)) {
+            if (studentTuitionLoan.getGrade().equals(Grade.ASSOCIATE) ||
+                    studentTuitionLoan.getGrade().equals(Grade.CONTINUOUS_BACHELORS) ||
+                    studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_BACHELORS)) {
+                studentTuitionLoan.setAmount(32000000);
+            } else if (studentTuitionLoan.getGrade().equals(Grade.CONTINUOUS_MASTER) ||
+                    studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_MASTER) ||
+                    studentTuitionLoan.getGrade().equals(Grade.PHD) || studentTuitionLoan.getGrade().
+                    equals(Grade.CONTINUOUS_PHD)) {
+                studentTuitionLoan.setAmount(26000000);
+            } else if (studentTuitionLoan.getGrade().equals(Grade.DISCONTINUOUS_SPECIALIZED_DOCTORATE)) {
+                studentTuitionLoan.setAmount(19500000);
+            }
+            studentTuitionLoanRepository.creat(studentTuitionLoan);
+        } else throw new LoanException(" You don't have enough requirements ! ");
     }
+
 
     @Override
     public StudentTuitionLoan findStudentTuitionLoanById(int id) {
@@ -57,4 +67,5 @@ public class StudentTuitionLoanServiceImpl implements StudentTuitionLoanService 
         }
         throw new LoanException("You can't request for loan in this time ! ");
     }
+
 }
