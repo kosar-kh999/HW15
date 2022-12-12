@@ -21,9 +21,9 @@ public class Person {
     String lastName;
     String fatherName;
     String motherName;
-    @Column(length = 10, nullable = false)
+    @Column(nullable = false)
     String BirthCertificateNumber;
-    @Column(length = 10, nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     String nationalCode;
     @Temporal(TemporalType.DATE)
     Date birthDate;
