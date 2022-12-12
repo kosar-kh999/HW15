@@ -11,7 +11,13 @@ import javax.persistence.Embeddable;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Embeddable
+@NoArgsConstructor
 public class HouseInfo {
-    Long HousingRentalContractNumber;
+    Long housingRentalContractNumber;
     String address;
+
+    public HouseInfo(Long housingRentalContractNumber, String address) {
+        this.housingRentalContractNumber = housingRentalContractNumber;
+        this.address = address;
+    }
 }
