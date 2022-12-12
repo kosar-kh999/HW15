@@ -43,4 +43,9 @@ public class Collegian extends Person implements Serializable {
     public Collegian() {
 
     }
+
+    public Collegian(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
