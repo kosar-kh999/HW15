@@ -13,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 public class RefundServiceImpl implements RefundService {
-    RefundRepository refundRepository = new RefundRepository();
     final int MONTHS_OF_YEAR = 12;
+    RefundRepository refundRepository = new RefundRepository();
 
     @Override
     public void saveNewRefund(Refund refund) {
@@ -51,18 +51,13 @@ public class RefundServiceImpl implements RefundService {
         return refundRepository.getAll();
     }
 
-    private double firstYearRepaymentAmount(double amount, int years, double interestRate, double annualIncrease) {
+    @Override
+    public double repaymentAmount(double amount, int years, double interestRate) {
         double total = amount + amount * interestRate;
-        double numberOfMonths = MONTHS_OF_YEAR;
-        double sum = numberOfMonths;
-        for (int i = 1; i < years; i++) {
-            double temp = numberOfMonths * annualIncrease;
-            numberOfMonths += temp;
-            sum += numberOfMonths;
-        }
-        return total / sum;
+        return total / (MONTHS_OF_YEAR * years);
     }
 
+    @Override
     public void startOfRefund(AllocatedLoan allocatedLoan, Refund refund) throws RefundException {
         Date enteringDate = allocatedLoan.getCollegian().getUniversityInfo().getEnteringDate();
         LocalDateTime localDateTime = DateUtil.changeDateToLocalDateTime(enteringDate);
